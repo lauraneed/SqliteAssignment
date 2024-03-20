@@ -1,0 +1,39 @@
+﻿<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="ShoppingLocalMaui.MainPage"
+             Title="Shopping List"
+             BackgroundColor="LightPink">
+    <StackLayout Padding="20">
+        <Label Text="Shopping Items" FontSize="Large" HorizontalOptions="CenterAndExpand" Margin="0,10,0,20"/>
+
+        <ListView ItemsSource="{Binding ShoppingItems}">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <StackLayout Orientation="Horizontal">
+                            <Label Text="{Binding Name}" VerticalOptions="Center"/>
+                            <Label Text="{Binding Quantity}" VerticalOptions="Center"/>
+                            <Button Text="Add to Cart" Clicked="AddToCartClicked"/>
+                        </StackLayout>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+
+        <!-- Shopping Cart Section -->
+        <Label Text="Shopping Cart" FontSize="Large" HorizontalOptions="CenterAndExpand" Margin="0,20,0,10"/>
+
+        <ListView ItemsSource="{Binding CurrentUser.ShoppingCart}">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <StackLayout Orientation="Horizontal">
+                            <Label Text="{Binding Name}" VerticalOptions="Center"/>
+                            <Label Text="{Binding Quantity}" VerticalOptions="Center"/>
+                        </StackLayout>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+    </StackLayout>
+</ContentPage>
